@@ -22,21 +22,16 @@ public class Application extends JFrame
 
         setSize(PANEL_WIDTH, PANEL_HEIGHT);
 
-        setTitle("Application");
+        setTitle("Loki Survival");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
+     * Main method that starts everything
      *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
+     * @pre     you have the game and a working computer
+     * @post    the game will run
      */
     public static void main()
     {

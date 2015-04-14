@@ -16,8 +16,6 @@ public class Window extends JPanel
      */
     public Window()
     {
-        // initialise instance variables
-        x = 0;
     }
 
     /**
