@@ -2,7 +2,13 @@
 comment0.params=
 comment0.target=Thor()
 comment0.text=\r\n\ Default\ constructor\ for\ objects\ of\ class\ Thor\r\n
-comment1.params=y
-comment1.target=int\ sampleMethod(int)
-comment1.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\ \ \ \ that\ describes\ the\ operation\ of\ the\ method\r\n\r\n\ @pre\ \ \ \ \ \ \ \ preconditions\ for\ the\ method\r\n\ \ \ \ \ \ \ \ \ \ \ \ (what\ the\ method\ assumes\ about\ the\ method's\ parameters\ and\ class's\ state)\r\n\ @post\ \ \ \ postconditions\ for\ the\ method\r\n\ \ \ \ \ \ \ \ \ \ \ \ (what\ the\ method\ guarantees\ upon\ completion)\r\n\ @param\ \ \ \ y\ \ \ \ description\ of\ parameter\ y\r\n\ @return\ \ \ \ description\ of\ the\ return\ value\r\n
-numComments=2
+comment1.params=
+comment1.target=double\ getSpeed()
+comment1.text=\r\n\ Returns\ the\ speed\ of\ the\ Thor\ object\r\n\r\n\ @pre\ \ \ \ \ Game\ works\ and\ is\ running\r\n\ @post\ \ \ \ Thor\ object\ left\ untouched\r\n\ @return\ \ Speed\ of\ Thor\ and\ negative\ if\ heading\ left\ and\ positive\ if\ heading\ right\r\n
+comment2.params=pic
+comment2.target=java.awt.image.BufferedImage\ getBufferedImage(int)
+comment2.text=\r\n\ Returns\ the\ BufferedImage\ of\ the\ Thor\ object\ used\ in\ painting\ the\ board\r\n\r\n\ @pre\ \ \ \ \ Game\ works\ and\ running\r\n\ @post\ \ \ \ Thor\ object\ left\ untouched\r\n\ @param\ \ \ What\ image\ you\ want;\ 1\ for\ left,\ 2\ for\ right,\ 3\ for\ first\ dead\ image,\ 4\ for\ second\ dead\ image,\r\n\ \ \ \ \ \ \ \ \ \ 5\ for\ third\ dead\ image\r\n\ @return\ \ The\ BufferedImage\ you\ requested\r\n
+comment3.params=y
+comment3.target=void\ sampleMethod(int)
+comment3.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\ \ \ \ that\ describes\ the\ operation\ of\ the\ method\r\n\r\n\ @pre\ \ \ \ \ \ \ \ preconditions\ for\ the\ method\r\n\ \ \ \ \ \ \ \ \ \ \ \ (what\ the\ method\ assumes\ about\ the\ method's\ parameters\ and\ class's\ state)\r\n\ @post\ \ \ \ postconditions\ for\ the\ method\r\n\ \ \ \ \ \ \ \ \ \ \ \ (what\ the\ method\ guarantees\ upon\ completion)\r\n\ @param\ \ \ \ y\ \ \ \ description\ of\ parameter\ y\r\n\ @return\ \ \ \ description\ of\ the\ return\ value\r\n
+numComments=4

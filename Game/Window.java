@@ -1,4 +1,7 @@
 import javax.swing.JPanel;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 /**
  * This is the panel that sits inside Application and handles all the drawing of the images.
@@ -17,22 +20,33 @@ public class Window extends JPanel
     public Window()
     {
     }
+    
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        drawThor(g);
+    }
 
     /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
+     * Draws Thor on the board
      *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
+     * @pre        Application has called Windows
      * @post    postconditions for the method
      *            (what the method guarantees upon completion)
      * @param    y    description of parameter y
      * @return    description of the return value
      */
-    public int sampleMethod(int y)
+    public void drawThor(Graphics g)
     {
-        // put your code here
-        return x+y;
+        Graphics2D g2d = (Graphics2D) g;
+        
+        Dimension size = getSize();
+        double w = size.getWidth();
+        double h = size.getHeight();
+        
+        Thor thor = new Thor();
+        
+        //g2d.drawImage(thor.getBufferedImage(1)
     }
 
 }

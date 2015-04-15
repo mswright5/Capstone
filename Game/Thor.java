@@ -11,10 +11,12 @@ import javax.imageio.ImageIO;
  */
 public class Thor
 {
-    /** description of instance variable x (add comment for each instance variable) */
+    /** Images for the movement and death of Thor */
     private BufferedImage left, right, dead1_1, dead1_2, dead2;
-    private int DX;
-    
+    /** The speed at which Thor flies at you */
+    private double dx;
+    /** The state of Thor*/
+    private boolean life;
 
     /**
      * Default constructor for objects of class Thor
@@ -35,11 +37,44 @@ public class Thor
 
         
         if (Math.random() < .5){
-            dx = -1 * Math.random() * 3
+            dx = -1 * Math.random() * 3;
         }
         else{
-            dx = Math.random() * 3
+            dx = Math.random() * 3;
         }
+        
+        life = true;
+    }
+    
+    /**
+     * Returns the speed of the Thor object
+     *
+     * @pre     Game works and is running
+     * @post    Thor object left untouched
+     * @return  Speed of Thor and negative if heading left and positive if heading right
+     */
+    public double getSpeed(){
+        return dx;
+    }
+    
+    /**
+     * Returns the BufferedImage of the Thor object used in painting the board
+     *
+     * @pre     Game works and running
+     * @post    Thor object left untouched
+     * @param   What image you want; 1 for left, 2 for right, 3 for first dead image, 4 for second dead image,
+     *          5 for third dead image
+     * @return  The BufferedImage you requested
+     */
+    public BufferedImage getBufferedImage(int pic){
+        if(life){
+            if(dx < 0){return left;}
+            else{return right;}
+        }
+        else if(pic == 2){return right;}
+        else if(pic == 2){return dead1_1;}
+        else if(pic == 2){return dead1_2;}
+        else{return dead2;}
     }
 
     /**
