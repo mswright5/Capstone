@@ -12,11 +12,9 @@ import javax.imageio.ImageIO;
 public class Thor
 {
     /** Images for the movement and death of Thor */
-    private BufferedImage left, right, dead1_1, dead1_2, dead2;
+    private Image left, right, dead1_1, dead1_2, dead2;
     /** The speed at which Thor flies at you */
     private double dx;
-    /** The state of Thor*/
-    private boolean life;
 
     /**
      * Default constructor for objects of class Thor
@@ -35,17 +33,15 @@ public class Thor
             dead2 = ImageIO.read(new File("Images\\Thor\\dead 2.png"));
         } catch (java.io.IOException e) {}
 
-        
         if (Math.random() < .5){
             dx = -1 * Math.random() * 3;
         }
         else{
             dx = Math.random() * 3;
         }
-        
-        life = true;
+
     }
-    
+
     /**
      * Returns the speed of the Thor object
      *
@@ -56,7 +52,7 @@ public class Thor
     public double getSpeed(){
         return dx;
     }
-    
+
     /**
      * Returns the BufferedImage of the Thor object used in painting the board
      *
@@ -64,32 +60,15 @@ public class Thor
      * @post    Thor object left untouched
      * @param   What image you want; 1 for left, 2 for right, 3 for first dead image, 4 for second dead image,
      *          5 for third dead image
-     * @return  The BufferedImage you requested
+     * @return  The Image you requested
      */
-    public BufferedImage getBufferedImage(int pic){
-        if(life){
-            if(dx < 0){return left;}
-            else{return right;}
-        }
-        else if(pic == 2){return right;}
-        else if(pic == 2){return dead1_1;}
-        else if(pic == 2){return dead1_2;}
+    public Image getImage(int pic){
+        if(dx < 0){return left;}
+        else if(dx > 0){return right;}
+
+        if(pic == 2){return right;}
+        else if(pic == 3){return dead1_1;}
+        else if(pic == 4){return dead1_2;}
         else{return dead2;}
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
-     *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
-     */
-    public void sampleMethod(int y)
-    {
-    }
-
 }

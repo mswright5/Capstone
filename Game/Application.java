@@ -10,8 +10,8 @@ import java.awt.*;
  */
 public class Application extends JFrame
 {
-    private final int PANEL_WIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 200;
-    private final int PANEL_HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight() - 200;
+    private final int PANEL_WIDTH = 1280;
+    private final int PANEL_HEIGHT = 720;
 
     /**
      * Default constructor for objects of class Application

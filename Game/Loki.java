@@ -2,8 +2,6 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.Graphics;
 
 /**
@@ -12,7 +10,7 @@ import java.awt.Graphics;
  * @author Matt
  * @version April 14, 2015
  */
-public class Loki implements ActionListener
+public class Loki
 {
     /** Images for the movement and death of Loki */
     private BufferedImage leftRun, rightRun, sitLeft, sitRight;
@@ -77,16 +75,5 @@ public class Loki implements ActionListener
         else{return sitRight;}
     }
     
-    public void actionPerformed(ActionEvent e) {
-
-        //x += 1;
-        //y += 1;
-
-        //if (y >) {
-
-         //   y = INITIAL_Y;
-         //   x = INITIAL_X;
-        //}
-        repaint();
-    }
+    
 }
