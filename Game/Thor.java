@@ -48,7 +48,7 @@ public class Thor
             }
             x = (int) (Math.random() * 100 + 128);
         }
-        System.out.println(x + " " + dx);
+        //System.out.println(x + " " + dx);
     }
 
     /**
