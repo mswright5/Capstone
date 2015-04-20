@@ -1,11 +1,11 @@
 #BlueJ class context
-comment0.params=
-comment0.target=Thor()
+comment0.params=width
+comment0.target=Thor(int)
 comment0.text=\r\n\ Default\ constructor\ for\ objects\ of\ class\ Thor\r\n
 comment1.params=
-comment1.target=double\ getSpeed()
-comment1.text=\r\n\ Returns\ the\ speed\ of\ the\ Thor\ object\r\n\r\n\ @pre\ \ \ \ \ Game\ works\ and\ is\ running\r\n\ @post\ \ \ \ Thor\ object\ left\ untouched\r\n\ @return\ \ Speed\ of\ Thor\ and\ negative\ if\ heading\ left\ and\ positive\ if\ heading\ right\r\n
-comment2.params=pic
-comment2.target=java.awt.Image\ getImage(int)
-comment2.text=\r\n\ Returns\ the\ BufferedImage\ of\ the\ Thor\ object\ used\ in\ painting\ the\ board\r\n\r\n\ @pre\ \ \ \ \ Game\ works\ and\ running\r\n\ @post\ \ \ \ Thor\ object\ left\ untouched\r\n\ @param\ \ \ What\ image\ you\ want;\ 1\ for\ left,\ 2\ for\ right,\ 3\ for\ first\ dead\ image,\ 4\ for\ second\ dead\ image,\r\n\ \ \ \ \ \ \ \ \ \ 5\ for\ third\ dead\ image\r\n\ @return\ \ The\ Image\ you\ requested\r\n
+comment1.target=int\ getX()
+comment1.text=\r\n\ Returns\ the\ x\ position\ of\ the\ Thor\ object\r\n\r\n\ @pre\ \ \ \ \ Game\ works\ and\ is\ running\r\n\ @post\ \ \ \ Thor\ object\ left\ untouched\r\n\ @return\ \ Speed\ of\ Thor\ and\ negative\ if\ heading\ left\ and\ positive\ if\ heading\ right\r\n
+comment2.params=
+comment2.target=java.awt.Image\ getMove()
+comment2.text=\r\n\ Returns\ the\ BufferedImage\ of\ the\ Thor\ object\ used\ in\ painting\ the\ board\r\n\r\n\ @pre\ \ \ \ \ Thor\ is\ moving\r\n\ @post\ \ \ \ Thor\ object\ left\ untouched\r\n\ @return\ \ Image\ of\ thor\ moving,\ null\ if\ not\ moving\r\n
 numComments=3

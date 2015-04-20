@@ -1,14 +1,14 @@
 #BlueJ class context
-comment0.params=
-comment0.target=Loki()
+comment0.params=width
+comment0.target=Loki(int)
 comment0.text=\r\n\ Default\ constructor\ for\ objects\ of\ class\ Thor\r\n
 comment1.params=g
 comment1.target=void\ move(java.awt.Graphics)
 comment1.text=\r\n\ Moves\ the\ Player\r\n\r\n\ @pre\ \ \ \ \ Game\ is\ working\r\n\ @post\ \ \ \ Game\ still\ works\r\n\ @param\ \ \ g\ \ \ the\ Graphics\ object\r\n
 comment2.params=
-comment2.target=double\ getSpeed()
-comment2.text=\r\n\ Returns\ the\ speed\ of\ Loki\r\n\r\n\ @pre\ \ \ \ \ Game\ works\ and\ is\ running\r\n\ @post\ \ \ \ Thor\ object\ left\ untouched\r\n\ @return\ \ Speed\ of\ Thor\ and\ negative\ if\ heading\ left\ and\ positive\ if\ heading\ right\r\n
+comment2.target=int\ getX()
+comment2.text=\r\n\ Returns\ the\ x\ position\ of\ the\ Thor\ object\r\n\r\n\ @pre\ \ \ \ \ Game\ works\ and\ is\ running\r\n\ @post\ \ \ \ Thor\ object\ left\ untouched\r\n\ @return\ \ Speed\ of\ Thor\ and\ negative\ if\ heading\ left\ and\ positive\ if\ heading\ right\r\n
 comment3.params=pic
 comment3.target=java.awt.image.BufferedImage\ getBufferedImage(int)
-comment3.text=\r\n\ Returns\ the\ BufferedImage\ of\ the\ Thor\ object\ used\ in\ painting\ the\ board\r\n\r\n\ @pre\ \ \ \ \ Game\ works\ and\ running\r\n\ @post\ \ \ \ Thor\ object\ left\ untouched\r\n\ @param\ \ \ What\ image\ you\ want;\ 1\ for\ runnning\ left,\ 2\ for\ running\ right,\ 3\ for\ first\ set\ left,\ \r\n\ \ \ \ \ \ \ \ \ \ 4\ for\ sit\ right\ \r\n\ @return\ \ The\ BufferedImage\ you\ requested\r\n
+comment3.text=\r\n\ Returns\ the\ BufferedImage\ of\ the\ Loki\ object\ used\ in\ painting\ the\ board\r\n\r\n\ @pre\ \ \ \ \ Game\ works\ and\ running\r\n\ @post\ \ \ \ Thor\ object\ left\ untouched\r\n\ @param\ \ \ What\ image\ you\ want;\ 1\ for\ runnning\ left,\ 2\ for\ running\ right,\ 3\ for\ first\ set\ left,\ \r\n\ \ \ \ \ \ \ \ \ \ 4\ for\ sit\ right\ \r\n\ @return\ \ The\ BufferedImage\ you\ requested\r\n
 numComments=4

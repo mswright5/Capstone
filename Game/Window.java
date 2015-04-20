@@ -21,28 +21,31 @@ implements ActionListener
     private Loki player;
     private Image background;
     private Thor[] thors;
+    private int round;
 
     /**
      * Default constructor for objects of class Window
      */
     public Window()
-    {
-        player = new Loki();
+    {        
         background = null;
         try {background = ImageIO.read(new File("Images\\asgard.jpg"));
         } catch (java.io.IOException e) {}
+        player = new Loki(background.getWidth(this)/2);
 
         setPreferredSize(new Dimension(background.getWidth(this), background.getHeight(this)));
 
-        for(int i = 0; i < 10; i++){
-            thors[i] = new Thor();
-        }
+        round = 1;
+        
+        makeThors();        
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(background,0,0,this);
         drawThor(g);
+        drawLoki(g);
+        repaint();
     }
 
     /**
@@ -62,10 +65,9 @@ implements ActionListener
         int w = (int) size.getWidth();
         int h = (int) size.getHeight();
 
-        Thor thor = new Thor();
 
         for(int i = 0;i < thors.length; i++){
-            g.drawImage(thors[i].getImage(1), w-200, h-200, this);
+            g.drawImage(thors[i].getMove(), thors[i].getX(), h-200, this);
         }
     }
 
@@ -84,9 +86,7 @@ implements ActionListener
         int w = (int) size.getWidth();
         int h = (int) size.getHeight();
 
-        Loki loki = new Loki();
-
-        g.drawImage(loki.getBufferedImage(1), w-200, h-200, this);
+        g.drawImage(player.getBufferedImage(1), player.getX(), h-200, this);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -100,5 +100,18 @@ implements ActionListener
         //   x = INITIAL_X;
         //}
         repaint();
+    }
+    
+    private void makeThors()
+    {
+        thors = new Thor[round];
+        for(int i = 0; i < round; i++){
+            thors[i] = new Thor(background.getWidth(this));
+        }
+    }
+    
+    private void die()
+    {
+        
     }
 }

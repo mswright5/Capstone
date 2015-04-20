@@ -15,14 +15,14 @@ public class Loki
     /** Images for the movement and death of Loki */
     private BufferedImage leftRun, rightRun, sitLeft, sitRight;
     /** The speed of Loki */
-    private double x, y, dx;
+    private int x, dx;
 
     /**
      * Default constructor for objects of class Thor
      */
-    public Loki()
+    public Loki(int width)
     {
-        x = 500; y = 500;
+        x = width; 
         leftRun = null;
         rightRun = null;
         sitLeft = null;
@@ -32,7 +32,6 @@ public class Loki
             sitLeft = ImageIO.read(new File("Images\\Loki\\sit left.png"));
             sitRight = ImageIO.read(new File("Images\\Loki\\sit left.png"));
         } catch (java.io.IOException e) {}
-
     }
     
     /**
@@ -47,20 +46,20 @@ public class Loki
         
     }
 
-    
     /**
-     * Returns the speed of Loki
+     * Returns the x position of the Thor object
      *
      * @pre     Game works and is running
      * @post    Thor object left untouched
      * @return  Speed of Thor and negative if heading left and positive if heading right
      */
-    public double getSpeed(){
-        return dx;
+    public int getX(){
+        x = x+dx;
+        return x;
     }
     
     /**
-     * Returns the BufferedImage of the Thor object used in painting the board
+     * Returns the BufferedImage of the Loki object used in painting the board
      *
      * @pre     Game works and running
      * @post    Thor object left untouched
