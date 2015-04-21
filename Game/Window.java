@@ -1,15 +1,15 @@
-import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
 import java.io.File;
-import javax.imageio.ImageIO;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
+import javax.imageio.ImageIO;
+import javax.swing.JPanel;
 
 /**
  * This is the panel that sits inside Application and handles all the drawing of the images.
@@ -17,11 +17,10 @@ import java.awt.event.KeyEvent;
  * @author Matt Wright
  * @version April 13, 2015
  */
-public class Window extends JPanel implements KeyListener
-{
-    /** the player Loki */
-    private Loki player;
+public class Window extends JPanel 
+{    
     private Image background;
+    private Loki player;    
     private ArrayList<Thor> thors;
     private int round;
     private Timer timer;
@@ -43,6 +42,10 @@ public class Window extends JPanel implements KeyListener
 
         timer = new Timer();
         timer.scheduleAtFixedRate(new ScheduleTask(), 100, 25);
+
+        //setFocusable(true);
+        //setVisible(true);
+        addKeyListener(new KeyboardPressListener());        
     }
 
     public void paintComponent(Graphics g) {
@@ -56,11 +59,9 @@ public class Window extends JPanel implements KeyListener
     /**
      * Draws Thor on the board
      *
-     * @pre        Application has called Windows
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
+     * @pre     Application has called Windows
+     * @post    Thor is drawn
+     * @param   g   The graphics object to be drawn on
      */
     private void drawThor(Graphics g)
 
@@ -96,21 +97,15 @@ public class Window extends JPanel implements KeyListener
         int w = (int) size.getWidth();
         int h = (int) size.getHeight();
 
-        g.drawImage(player.getBufferedImage(1), player.getX(), h-200, this);
+        g.drawImage(player.getBufferedImage(), player.getX(), h-200, this);
     }
 
-    public void keyPressed(KeyEvent e) {
-        int keyCode = e.getKeyCode();
-        if( keyCode == KeyEvent.VK_LEFT) { }
-        else if( keyCode == KeyEvent.VK_RIGHT){}
-    }
-
-    public void keyReleased(KeyEvent e) {
-    }
-    
-    public void keyTyped(KeyEvent e) {}
-    
-    
+    /**
+     * Creates thors
+     *
+     * @pre     All thors have died, or game is just starting
+     * @post    private instance variable thors is populated according to what number round it is
+     */
     private void makeThors()
     {
         thors = new ArrayList<Thor>();
@@ -119,6 +114,13 @@ public class Window extends JPanel implements KeyListener
         }
     }
 
+    /**
+     * Deals with the player dying
+     *
+     * @pre     Enemy has touched the player
+     * @post    Game stops
+     * @param   g   Graphics object to print out that you died
+     */
     private void die(Graphics g)
     {
         thors = new ArrayList<Thor>();
@@ -129,11 +131,42 @@ public class Window extends JPanel implements KeyListener
 
     }
 
+    /**
+     * This is a timer that calls the repaint method every so often, creating the illusion of 
+     * movement
+     * 
+     * @author Matt Wright
+     * @version April 13, 2015
+     */
     private class ScheduleTask extends TimerTask {
 
         @Override
         public void run() {            
             repaint();
         }
+    }
+
+    /**
+     * This is the keyboard listener that listend for the arrow key presses and deals with it
+     * 
+     * @author Matt Wright
+     * @version April 13, 2015
+     */
+    private class KeyboardPressListener implements KeyListener
+    {
+        public void keyPressed(KeyEvent e) {
+            int keyCode = e.getKeyCode();
+            if( keyCode == KeyEvent.VK_LEFT) {player.move(-1);}
+            else if( keyCode == KeyEvent.VK_RIGHT){player.move(1);}
+            System.out.print(keyCode + " " + KeyEvent.VK_LEFT + " " + KeyEvent.VK_RIGHT);
+        }
+
+        public void keyReleased(KeyEvent e) {
+            int keyCode = e.getKeyCode();
+            if( keyCode == KeyEvent.VK_LEFT || keyCode == KeyEvent.VK_RIGHT ) {player.move(-1);}
+            System.out.print(keyCode + " " + KeyEvent.VK_LEFT + " " + KeyEvent.VK_RIGHT);
+        }
+
+        public void keyTyped(KeyEvent e) {System.out.println("Typed");}
     }
 }

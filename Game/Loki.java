@@ -41,9 +41,9 @@ public class Loki
      * @post    Game still works
      * @param   g   the Graphics object
      */
-    public void move(Graphics g)
+    public void move(int speed)
     {
-        
+        dx = speed;
     }
 
     /**
@@ -67,7 +67,7 @@ public class Loki
      *          4 for sit right 
      * @return  The BufferedImage you requested
      */
-    public BufferedImage getBufferedImage(int pic){
+    public BufferedImage getBufferedImage(){
         if(dx < 0){return leftRun;}
         else if(dx > 0){return rightRun;}
         else if(Math.random() < .5){return sitLeft;}

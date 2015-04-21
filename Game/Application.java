@@ -1,6 +1,5 @@
-import java.awt.EventQueue;
-import javax.swing.JFrame;
 import java.awt.*;
+import javax.swing.JFrame;
 
 /**
  * This is the application that will run the game. It contains a main method to start everything
