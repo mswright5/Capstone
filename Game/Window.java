@@ -43,8 +43,8 @@ public class Window extends JPanel
         timer = new Timer();
         timer.scheduleAtFixedRate(new ScheduleTask(), 100, 25);
 
-        //setFocusable(true);
-        //setVisible(true);
+        setFocusable(true);
+        setVisible(true);
         addKeyListener(new KeyboardPressListener());        
     }
 
@@ -158,15 +158,24 @@ public class Window extends JPanel
             int keyCode = e.getKeyCode();
             if( keyCode == KeyEvent.VK_LEFT) {player.move(-1);}
             else if( keyCode == KeyEvent.VK_RIGHT){player.move(1);}
-            System.out.print(keyCode + " " + KeyEvent.VK_LEFT + " " + KeyEvent.VK_RIGHT);
+            else if (keyCode == KeyEvent.VK_SPACE) {
+                //TODO
+            }
         }
 
         public void keyReleased(KeyEvent e) {
             int keyCode = e.getKeyCode();
-            if( keyCode == KeyEvent.VK_LEFT || keyCode == KeyEvent.VK_RIGHT ) {player.move(-1);}
-            System.out.print(keyCode + " " + KeyEvent.VK_LEFT + " " + KeyEvent.VK_RIGHT);
+            if( keyCode == KeyEvent.VK_LEFT){      
+                player.move(0);
+                player.setState(true);
+            }
+            else if( keyCode == KeyEvent.VK_RIGHT ) {
+                player.move(0);
+                player.setState(false);
+            }
         }
 
-        public void keyTyped(KeyEvent e) {System.out.println("Typed");}
+        public void keyTyped(KeyEvent e) {}
     }
 }
+

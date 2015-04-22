@@ -1,8 +1,8 @@
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
-import java.awt.Graphics;
 
 /**
  * The true enemy here
@@ -16,6 +16,8 @@ public class Loki
     private BufferedImage leftRun, rightRun, sitLeft, sitRight;
     /** The speed of Loki */
     private int x, dx;
+    /** True if player last moved left, false if he looked right */
+    private boolean state;
 
     /**
      * Default constructor for objects of class Thor
@@ -30,7 +32,7 @@ public class Loki
         try {leftRun = ImageIO.read(new File("Images\\Loki\\run left.png"));
             rightRun = ImageIO.read(new File("Images\\Loki\\run right.png"));
             sitLeft = ImageIO.read(new File("Images\\Loki\\sit left.png"));
-            sitRight = ImageIO.read(new File("Images\\Loki\\sit left.png"));
+            sitRight = ImageIO.read(new File("Images\\Loki\\sit right.png"));
         } catch (java.io.IOException e) {}
     }
     
@@ -39,11 +41,23 @@ public class Loki
      *
      * @pre     Game is working
      * @post    Game still works
-     * @param   g   the Graphics object
+     * @param   speed   the speed at which the player will move
      */
     public void move(int speed)
     {
         dx = speed;
+    }
+    
+    /**
+     * Moves the Player
+     *
+     * @pre     Game is working
+     * @post    Game still works
+     * @param   speed   the speed at which the player will move
+     */
+    public void setState(boolean direction)
+    {
+        state = direction;
     }
 
     /**
@@ -70,7 +84,7 @@ public class Loki
     public BufferedImage getBufferedImage(){
         if(dx < 0){return leftRun;}
         else if(dx > 0){return rightRun;}
-        else if(Math.random() < .5){return sitLeft;}
+        else if(state){return sitLeft;}
         else{return sitRight;}
     }
     

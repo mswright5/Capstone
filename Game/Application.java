@@ -1,5 +1,7 @@
 import java.awt.*;
 import javax.swing.JFrame;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  * This is the application that will run the game. It contains a main method to start everything
@@ -11,13 +13,18 @@ public class Application extends JFrame
 {
     private final int PANEL_WIDTH = 1280;
     private final int PANEL_HEIGHT = 720;
-
+    
+    private Window panel;
+    
     /**
      * Default constructor for objects of class Application
      */
     public Application()
     {
-        add(new Window());
+        panel = new Window();
+        add(panel);
+        
+        addWindowListener(new FrameWindowListener());
 
         setSize(PANEL_WIDTH, PANEL_HEIGHT);
 
@@ -41,6 +48,14 @@ public class Application extends JFrame
                 ex.setVisible(true);
             }
         });
+    }
+    
+    class FrameWindowListener extends WindowAdapter
+    {
+        public void windowOpened(WindowEvent event)
+        {
+            panel.requestFocusInWindow();
+        }
     }
 
 }
