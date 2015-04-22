@@ -1,4 +1,5 @@
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -18,12 +19,13 @@ import javax.swing.JPanel;
  * @version April 13, 2015
  */
 public class Window extends JPanel 
-{    
-    private Image background;
-    private Loki player;    
+{        
     private ArrayList<Thor> thors;
-    private int round;
+    private ArrayList<Dagger> daggers;
+    private Image background;
+    private Loki player;
     private Timer timer;
+    private int round;
 
     /**
      * Default constructor for objects of class Window
@@ -33,12 +35,14 @@ public class Window extends JPanel
         background = null;
         try {background = ImageIO.read(new File("Images\\asgard.jpg"));} 
         catch (java.io.IOException e) {}
-        player = new Loki(background.getWidth(this)/2);
+        player = new Loki(background.getWidth(this)/2 - 50);
 
         setPreferredSize(new Dimension(background.getWidth(this), background.getHeight(this)));
 
         round = 1;
-        makeThors();        
+        makeThors();    
+
+        daggers = new ArrayList<Dagger>();
 
         timer = new Timer();
         timer.scheduleAtFixedRate(new ScheduleTask(), 100, 25);
@@ -51,8 +55,9 @@ public class Window extends JPanel
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(background,0,0,this);
-        drawThor(g);
         drawLoki(g);
+        drawThor(g);        
+        drawDaggers(g);
         g.drawString("Round: " + round, background.getWidth(this) - 100, 20);
     }
 
@@ -72,8 +77,21 @@ public class Window extends JPanel
         int w = (int) size.getWidth();
         int h = (int) size.getHeight();
 
+        for(int i = 0; i < thors.size();i++){
+            for(int j = 0; j < daggers.size(); j++){
+                if (Math.abs(thors.get(i).getX() - daggers.get(j).getX()) < 50){
+                    thors.remove(i);
+                    daggers.remove(j);
+                    if(thors.size() == 0) {
+                        round++;
+                        makeThors();
+                    }
+                }
+            }
+        }
+
         for(int i = 0;i < thors.size(); i++){
-            if ( Math.abs(thors.get(i).getX() - player.getX()) < 128 ){
+            if ( Math.abs(thors.get(i).getX() - player.getX()) < 120 ){
                 die(g);
             }
             else{
@@ -101,6 +119,26 @@ public class Window extends JPanel
     }
 
     /**
+     * Draws Daggers on the board
+     *
+     * @pre     Application has called Window
+     * @post    dagger is drawn
+     * @param   g    The Graphics Object
+     */
+    private void drawDaggers(Graphics g)
+    {
+        Graphics2D g2d = (Graphics2D) g;
+
+        Dimension size = getSize();
+        int w = (int) size.getWidth();
+        int h = (int) size.getHeight();
+
+        for(int i = 0; i < daggers.size(); i++){
+            g.drawImage(daggers.get(i).getBufferedImage(), daggers.get(i).getX(), h-200, this);
+        }
+    }
+
+    /**
      * Creates thors
      *
      * @pre     All thors have died, or game is just starting
@@ -124,11 +162,9 @@ public class Window extends JPanel
     private void die(Graphics g)
     {
         thors = new ArrayList<Thor>();
-        g.drawString("You died!", background.getWidth(this)/2, background.getHeight(this)/2);
-        repaint();
-        //try{Thread.sleep(10000);}
-        //catch(java.lang.InterruptedException e) {}
-
+        g.drawString("You died! Rounds: " + round, background.getWidth(this)/2, 
+                    background.getHeight(this)/2);
+        setEnabled(false);
     }
 
     /**
@@ -156,10 +192,16 @@ public class Window extends JPanel
     {
         public void keyPressed(KeyEvent e) {
             int keyCode = e.getKeyCode();
-            if( keyCode == KeyEvent.VK_LEFT) {player.move(-1);}
-            else if( keyCode == KeyEvent.VK_RIGHT){player.move(1);}
-            else if (keyCode == KeyEvent.VK_SPACE) {
-                //TODO
+            if( keyCode == KeyEvent.VK_LEFT) {player.move(-2);}
+            else if( keyCode == KeyEvent.VK_RIGHT){player.move(2);}
+            if (keyCode == KeyEvent.VK_SPACE) {
+                if(player.getDirection() < 0){
+                    daggers.add(new Dagger(player.getX() -50, -4));
+                }
+
+                else if(player.getDirection() > 0){
+                    daggers.add(new Dagger(player.getX() +50, 4));
+                }
             }
         }
 

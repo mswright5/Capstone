@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=start\ speed
+comment0.target=Dagger(int,\ int)
+comment0.text=\r\n\ Default\ constructor\ for\ objects\ of\ class\ Dagger\r\n
+comment1.params=
+comment1.target=int\ getX()
+comment1.text=\r\n\ Returns\ the\ x\ position\ of\ the\ Dagger\ object\r\n\r\n\ @pre\ \ \ \ \ Game\ works\ and\ is\ running\r\n\ @post\ \ \ \ Thor\ object\ left\ untouched\r\n\ @return\ \ Speed\ of\ Thor\ and\ negative\ if\ heading\ left\ and\ positive\ if\ heading\ right\r\n
+comment2.params=
+comment2.target=java.awt.image.BufferedImage\ getBufferedImage()
+comment2.text=\r\n\ Returns\ the\ BufferedImage\ of\ the\ Dagger\ object\ used\ in\ painting\ the\ board\r\n\r\n\ @pre\ \ \ \ \ Game\ works\ and\ running\r\n\ @post\ \ \ \ You\ have\ the\ image\r\n\ @return\ \ The\ BufferedImage\ you\ requested\r\n
+numComments=3

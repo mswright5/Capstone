@@ -53,7 +53,7 @@ public class Loki
      *
      * @pre     Game is working
      * @post    Game still works
-     * @param   speed   the speed at which the player will move
+     * @param   direction   true if player last moved left, false if right
      */
     public void setState(boolean direction)
     {
@@ -88,4 +88,16 @@ public class Loki
         else{return sitRight;}
     }
     
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     * @param  y   a sample parameter for a method
+     * @return     -1 if left, 1 if right
+     */
+    public int getDirection()
+    {
+        if(state){return -1;}
+        return 1;
+    }
+
 }
