@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -26,39 +27,42 @@ public class Window extends JPanel
     private Loki player;
     private Timer timer;
     private int round;
+    private boolean isOver;
 
     /**
      * Default constructor for objects of class Window
      */
     public Window()
     {        
+        isOver = false;
         background = null;
         try {background = ImageIO.read(new File("Images\\asgard.jpg"));} 
         catch (java.io.IOException e) {}
         player = new Loki(background.getWidth(this)/2 - 50);
-
-        setPreferredSize(new Dimension(background.getWidth(this), background.getHeight(this)));
-
-        round = 1;
-        makeThors();    
-
         daggers = new ArrayList<Dagger>();
 
+        round = 1;
+        makeThors();  
+        
         timer = new Timer();
         timer.scheduleAtFixedRate(new ScheduleTask(), 100, 25);
-
+        
+        setPreferredSize(new Dimension(background.getWidth(this), background.getHeight(this)));
         setFocusable(true);
         setVisible(true);
-        addKeyListener(new KeyboardPressListener());        
+        addKeyListener(new KeyboardPressListener());                
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(background,0,0,this);
-        drawLoki(g);
-        drawThor(g);        
-        drawDaggers(g);
-        g.drawString("Round: " + round, background.getWidth(this) - 100, 20);
+        if(isOver){die(g);}
+        else{
+            drawLoki(g);
+            drawThor(g);        
+            drawDaggers(g);
+            g.drawString("Round: " + round, background.getWidth(this) - 100, 20);
+        }
     }
 
     /**
@@ -94,8 +98,8 @@ public class Window extends JPanel
             if ( Math.abs(thors.get(i).getX() - player.getX()) < 120 ){
                 die(g);
             }
-            else{
-                g.drawImage(thors.get(i).getMove(), thors.get(i).getX(), h-200, this);
+            else{                
+                g.drawImage(thors.get(i).getMove(), thors.get(i).getX(), h-200, this);                
             }
         }
     }
@@ -162,8 +166,11 @@ public class Window extends JPanel
     private void die(Graphics g)
     {
         thors = new ArrayList<Thor>();
-        g.drawString("You died! Rounds: " + round, background.getWidth(this)/2, 
-                    background.getHeight(this)/2);
+        setFont(new Font("Font", Font.BOLD, 50));
+        g.setColor(Color.RED);
+        g.drawString("You died! Rounds: " + round, background.getWidth(this)/3, 
+            background.getHeight(this)/2);
+        isOver = true;
         setEnabled(false);
     }
 
