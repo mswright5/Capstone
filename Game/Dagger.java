@@ -8,13 +8,13 @@ import javax.imageio.ImageIO;
  * The Dagger that Loki shoots
  * 
  * @author Matt
- * @version April 14, 2015
+ * @version April 24, 2015
  */
 public class Dagger
 {
     /** Images for the movement of Dagger */
     private BufferedImage left, right;
-    /** The speed of Dagger */
+    /** The speed and location of Dagger */
     private int x, dx;
 
     /**
@@ -35,8 +35,8 @@ public class Dagger
      * Returns the x position of the Dagger object
      *
      * @pre     Game works and is running
-     * @post    Thor object left untouched
-     * @return  Speed of Thor and negative if heading left and positive if heading right
+     * @post    Dagger object left untouched
+     * @return  Position of the object on the x-axis
      */
     public int getX(){
         x = x+dx;

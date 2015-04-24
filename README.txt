@@ -4,17 +4,18 @@ side of the Bifröst.
 A/D = Move
 Left Click / Spacebar = Shoot
 
-Credit
+Credits:
 
-Pictures of Thor and Loki courtesy of Mogero of deviantart.com
+	Pictures of Thor and Loki courtesy of Mogero of deviantart.com
 
+	Daggers taken by my friend, Chayo
 
-Music Courtesy courtesy of Brian Tyler, composer of Thor: The Dark World soundtrack
-Title		10 - Untouchable
-Length		4:08
-Released 	November 12, 2013
-Recorded 	Abbey Road Studios
-Genre 		Film score
-Length 		1:17:11
-Label 		Hollywood / Marvel Music
-Producer 	Brian Tyler
+	Music Courtesy courtesy of Brian Tyler, composer of Thor: The Dark World soundtrack
+	Title		10 - Untouchable
+	Length		4:08
+	Released 	November 12, 2013
+	Recorded 	Abbey Road Studios
+	Genre 		Film score
+	Length 		1:17:11
+	Label 		Hollywood / Marvel Music
+	Producer 	Brian Tyler

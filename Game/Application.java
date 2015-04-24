@@ -4,10 +4,11 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 /**
- * This is the application that will run the game. It contains a main method to start everything
+ * This is the application that will run the game. It contains a main method to start everything and give the
+ * window focus for the keyboard.
  * 
  * @author Matt Wright
- * @version April 13, 2015
+ * @version April 24, 2015
  */
 public class Application extends JFrame
 {
@@ -36,7 +37,7 @@ public class Application extends JFrame
     /**
      * Main method that starts everything
      *
-     * @pre     you have the game and a working computer
+     * @pre     you have the game and a working computer and jre installed
      * @post    the game will run
      */
     public static void main()
@@ -50,6 +51,9 @@ public class Application extends JFrame
         });
     }
     
+    
+    /**This is the application that will run the game. It contains a main method to start everything and give the
+       window focus for the keyboard. */
     class FrameWindowListener extends WindowAdapter
     {
         public void windowOpened(WindowEvent event)

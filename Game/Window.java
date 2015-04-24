@@ -17,16 +17,23 @@ import javax.swing.JPanel;
  * This is the panel that sits inside Application and handles all the drawing of the images.
  * 
  * @author Matt Wright
- * @version April 13, 2015
+ * @version April 24, 2015
  */
 public class Window extends JPanel 
 {        
+    /** A list of the enemy for the windows to draw */
     private ArrayList<Thor> thors;
+    /** A list of daggers for the windows to draw when the player shoots */
     private ArrayList<Dagger> daggers;
+    /** The background image */
     private Image background;
+    /** The player, that is played by the user */
     private Loki player;
+    /** The timer to create an illusion of FPS; it repaints the window every so often */
     private Timer timer;
+    /** The round that the current user in on */
     private int round;
+    /** Is the game over? */
     private boolean isOver;
 
     /**
@@ -78,23 +85,27 @@ public class Window extends JPanel
         Graphics2D g2d = (Graphics2D) g;
 
         Dimension size = getSize();
-        int w = (int) size.getWidth();
         int h = (int) size.getHeight();
 
+        //check if a dagger has hit Thor
         for(int i = 0; i < thors.size();i++){
             for(int j = 0; j < daggers.size(); j++){
                 if (Math.abs(thors.get(i).getX() - daggers.get(j).getX()) < 50){
                     thors.remove(i);
                     daggers.remove(j);
+                    //If all thors have died, make more
                     if(thors.size() == 0) {
                         round++;
                         makeThors();
                     }
+                    break;
                 }
             }
         }
-
+        
+        //Draws all remaining Thors (if all thors absent, previous loop should have made more
         for(int i = 0;i < thors.size(); i++){
+            //if thor has hit the player, game is over
             if ( Math.abs(thors.get(i).getX() - player.getX()) < 120 ){
                 die(g);
             }
@@ -109,14 +120,13 @@ public class Window extends JPanel
      *
      * @pre     Application has called Window
      * @post    Loki is drawn
-     * @param   g    The Graphics Object
+     * @param   g    The Graphics Object to be drawn on
      */
     private void drawLoki(Graphics g)
     {
         Graphics2D g2d = (Graphics2D) g;
 
         Dimension size = getSize();
-        int w = (int) size.getWidth();
         int h = (int) size.getHeight();
 
         g.drawImage(player.getBufferedImage(), player.getX(), h-200, this);
@@ -134,7 +144,6 @@ public class Window extends JPanel
         Graphics2D g2d = (Graphics2D) g;
 
         Dimension size = getSize();
-        int w = (int) size.getWidth();
         int h = (int) size.getHeight();
 
         for(int i = 0; i < daggers.size(); i++){
@@ -146,7 +155,7 @@ public class Window extends JPanel
      * Creates thors
      *
      * @pre     All thors have died, or game is just starting
-     * @post    private instance variable thors is populated according to what number round it is
+     * @post    private instance variable thors is populated according to what round it is
      */
     private void makeThors()
     {
@@ -160,7 +169,7 @@ public class Window extends JPanel
      * Deals with the player dying
      *
      * @pre     Enemy has touched the player
-     * @post    Game stops
+     * @post    Game stops (must restart game to start again)
      * @param   g   Graphics object to print out that you died
      */
     private void die(Graphics g)
@@ -179,7 +188,7 @@ public class Window extends JPanel
      * movement
      * 
      * @author Matt Wright
-     * @version April 13, 2015
+     * @version April 24, 2015
      */
     private class ScheduleTask extends TimerTask {
 
@@ -190,10 +199,11 @@ public class Window extends JPanel
     }
 
     /**
-     * This is the keyboard listener that listend for the arrow key presses and deals with it
+     * This is the keyboard listener that listens for the arrow key presses and spacebar
+     * and deals with it
      * 
      * @author Matt Wright
-     * @version April 13, 2015
+     * @version April 24, 2015
      */
     private class KeyboardPressListener implements KeyListener
     {

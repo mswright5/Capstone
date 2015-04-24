@@ -5,16 +5,16 @@ import java.io.File;
 import javax.imageio.ImageIO;
 
 /**
- * The true enemy here
+ * This is the main character
  * 
  * @author Matt
- * @version April 14, 2015
+ * @version April 24, 2015
  */
 public class Loki
 {
-    /** Images for the movement and death of Loki */
+    /** Images for the movement of Loki */
     private BufferedImage leftRun, rightRun, sitLeft, sitRight;
-    /** The speed of Loki */
+    /** The speed and position of Loki */
     private int x, dx;
     /** True if player last moved left, false if he looked right */
     private boolean state;
@@ -57,15 +57,16 @@ public class Loki
      */
     public void setState(boolean direction)
     {
+        //NOTED THAT I CAN DO THIS IN THE MOVE METHOD AND REMOVE THIS METHOD
         state = direction;
     }
 
     /**
-     * Returns the x position of the Thor object
+     * Returns the x position of Loki
      *
      * @pre     Game works and is running
-     * @post    Thor object left untouched
-     * @return  Speed of Thor and negative if heading left and positive if heading right
+     * @post    Loki object left untouched
+     * @return  Position of Loki on the x-axis
      */
     public int getX(){
         x = x+dx;
@@ -76,10 +77,8 @@ public class Loki
      * Returns the BufferedImage of the Loki object used in painting the board
      *
      * @pre     Game works and running
-     * @post    Thor object left untouched
-     * @param   What image you want; 1 for runnning left, 2 for running right, 3 for first set left, 
-     *          4 for sit right 
-     * @return  The BufferedImage you requested
+     * @post    Loki object left untouched
+     * @return  The BufferedImage you requested, based on whether Loki is moving or the last direction he moved
      */
     public BufferedImage getBufferedImage(){
         if(dx < 0){return leftRun;}
@@ -89,9 +88,8 @@ public class Loki
     }
     
     /**
-     * An example of a method - replace this comment with your own
+     * Returns the direction of thor
      *
-     * @param  y   a sample parameter for a method
      * @return     -1 if left, 1 if right
      */
     public int getDirection()

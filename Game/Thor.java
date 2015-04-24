@@ -7,15 +7,14 @@ import javax.imageio.ImageIO;
  * The true enemy here
  * 
  * @author Matt
- * @version April 14, 2015
+ * @version April 24, 2015
  */
 public class Thor
 {
-    /** Images for the movement and death of Thor */
+    /** Images for the movement and death of Thor (the last three are not currently used) */
     private Image left, right, dead1_1, dead1_2, dead2;
     /** The speed at which Thor flies at you and the position of Thor on the x-axis*/
     private int dx, x;
-    /** The position of Thor on the X-Axis*/
 
     /**
      * Default constructor for objects of class Thor
@@ -34,6 +33,7 @@ public class Thor
             dead2 = ImageIO.read(new File("Images\\Thor\\dead 2.png"));
         } catch (java.io.IOException e) {}
 
+        //randomly determines the speed of thor, and places him accordingly on the x-axis
         if (Math.random() < .5){
             dx = (int) (-1 * Math.random() * 3);
             if(dx == 0){
@@ -48,7 +48,6 @@ public class Thor
             }
             x = (int) (Math.random() * 100 + 128);
         }
-        //System.out.println(x + " " + dx);
     }
 
     /**
@@ -56,7 +55,7 @@ public class Thor
      *
      * @pre     Game works and is running
      * @post    Thor object left untouched
-     * @return  Speed of Thor and negative if heading left and positive if heading right
+     * @return  The position of Thor on the x-axis
      */
     public int getX(){
         x = x+dx;
@@ -64,11 +63,11 @@ public class Thor
     }
 
     /**
-     * Returns the BufferedImage of the Thor object used in painting the board
+     * Returns the Image of the Thor object used in painting the board
      *
      * @pre     Thor is moving
      * @post    Thor object left untouched
-     * @return  Image of thor moving, null if not moving
+     * @return  Image of thor moving, null if not moving (normally not returned)
      */
     public Image getMove(){
         if(dx < 0){return left;}
